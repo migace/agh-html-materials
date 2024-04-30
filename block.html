@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Block</title>
+    <style>
+      #cube {
+        width: 250px;
+        height: 250px;
+        border: 4px dashed black;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cube"></div>
+
+    <script>
+      const cubeEl = document.getElementById("cube");
+
+      let counter = 0;
+      let direction = 1; // 0 - w lewo, 1 - w prawo
+      setInterval(function () {
+        //cubeEl.style.left = `${counter++}px`;
+        cubeEl.style.left = `${counter}px`;
+        //direction === 1 ? counter++ : counter--;
+        if (direction === 1) {
+          counter++;
+        } else {
+          counter--;
+        }
+
+        if (counter === 0) {
+          direction = 1;
+        }
+
+        if (counter === 300) {
+          direction = 0;
+        }
+      }, 2);
+    </script>
+
+    <script>
+      const API_URL = "https://jsonplaceholder.typicode.com/photos";
+
+      fetch(API_URL)
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          console.log(data);
+        });  
+    </script>
+  </body>
+</html>

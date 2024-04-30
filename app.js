@@ -119,7 +119,7 @@ console.log(
 
 console.log(grades);
 
-function getAvg(data) {
+function calculateAvg(data) {
   let sum = 0;
 
   // i++ => i = i + 1
@@ -133,4 +133,60 @@ function getAvg(data) {
   return sum / data.length;
 }
 
-console.log(getAvg(grades));
+console.log(calculateAvg(grades));
+
+const student = {
+  name: "Mike",
+  age: 12,
+  grades: [2, 2, 3, 5, 4, 3, 2, 2],
+  hello: function () {
+    return `Hello ${this.name}`;
+  },
+  getAvg: function () {
+    return calculateAvg(this.grades);
+  },
+};
+
+console.log(student);
+
+console.log(student.name);
+
+console.log(student.hello());
+console.log(student.getAvg());
+
+const client1 = {
+  name: "Client #1",
+  invoices: [3455, 32323, 12121, 21212],
+};
+const client2 = {
+  name: "Client #2",
+  invoices: [3455, 32323, 323, 21212],
+};
+const client3 = {
+  name: "Client #3",
+  invoices: [3455, 32321223, 12121, 21212],
+};
+const client4 = {
+  name: "Client #4",
+  invoices: [3455, 11212, 12121, 21212],
+};
+const client5 = {
+  name: "Client #5",
+  invoices: [3455, 323299, 12121, 21212],
+};
+
+const clients = [client1, client2, client3, client4, client5];
+
+for (let i = 0; i < clients.length; i++) {
+  let sum = 0;
+
+  for (let j = 0; j < clients[i].invoices.length; j++) {
+    sum += clients[i].invoices[j];
+  }
+
+  console.log(
+    `Klient: ${
+      clients[i].name
+    }, wartość faktur netto: ${sum}, wartość faktur brutto: ${sum * 1.23}`
+  );
+}
